@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Waff";
+    DateTime now = DateTime.Now;
+    DateTime yrEnd = new DateTime(now.Year, 12, 31);
+
+    double remainingDays = Math.Ceiling((yrEnd - now).TotalDays);
+
+    int id = 0;
+    try
+    {
+        id = Int32.Parse(Url.Action().Split("/").Last());
+    }
+    catch { System.Diagnostics.Debug.WriteLine("Try again"); }
+
+}
+
+<div class="jumbotron sticky-top">
+    <h3>Generate Waffles</h3>
+</div>
+<body class="p-3">
+    <div class="inline-block" id="waff_gen">
+        <a class="btn btn-success" role="button" href="~/Lab4/Waff/1">1</a>
+        <a class="btn btn-success" role="button" href="~/Lab4/Waff/2">2</a>
+        <a class="btn btn-success" role="button" href="~/Lab4/Waff/3">3</a>
+        <a class="btn btn-success" role="button" href="~/Lab4/Waff/4">4</a>
+        <a class="btn btn-success" role="button" href="~/Lab4/Waff/5">5</a>
+    </div>
+    @for (int i = 0; i < id; i++)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(WaffleGenerator.WaffleEngine.Html(1, true, false)))
+            </div>
+        </div>
+    }
+</body>

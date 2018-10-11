@@ -17,11 +17,11 @@ namespace Lab4.Controllers
 
         public string timeOfDay()
         {
-            if(DateTime.Now.Hour < 12)
+            if (DateTime.Now.Hour < 12)
             {
                 return "Good Morning";
             }
-            else if(DateTime.Now.Hour < 18)
+            else if (DateTime.Now.Hour < 18)
             {
 
                 return "Good Afternoon";
@@ -34,4 +34,11 @@ namespace Lab4.Controllers
             }
         }
 
+        public IActionResult Waff()
+        {
+            ViewData["time"] = timeOfDay();
+            return View("Waff");
+        }
+
+    }
 }
