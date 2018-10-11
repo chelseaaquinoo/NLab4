@@ -10,13 +10,28 @@ namespace Lab4.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["time"] = timeOfDay();
             DateTime date1 = DateTime.Now;
-            return NewMethod();
+            return View(date1);
         }
 
-        private IActionResult NewMethod()
+        public string timeOfDay()
         {
-            return View();
+            if(DateTime.Now.Hour < 12)
+            {
+                return "Good Morning";
+            }
+            else if(DateTime.Now.Hour < 18)
+            {
+
+                return "Good Afternoon";
+            }
+
+            else
+            {
+
+                return "Good Evening";
+            }
         }
-    }
+
 }
