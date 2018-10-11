@@ -35,3 +35,9 @@ body {
         display: none;
     }
 }
+
+.jumbotron{
+
+    background-color: dodgerblue;
+    color: floralwhite;
+}
